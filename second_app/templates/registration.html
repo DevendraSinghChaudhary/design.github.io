@@ -1,0 +1,144 @@
+{% extends 'main.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+{% block title %}
+	<title>Crud Operation</title>
+{% endblock title %}
+
+</head>
+{% block body %}
+<body class="my-5">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="jumbotron p-3">
+					<h2>Manage Employees <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#myModal">Add New Employees</button></h2>
+
+
+          {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              {% for message in messages %}
+              <div class="alert alert-success alert-dismissible">
+                 <button type="button" class="close" data-dismiss="alert">&times;</button>
+                     {{ message }}
+              </div>
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+
+
+	  			<table class="table table-hover table-dark">
+				    <tr>
+				    <td>ID</td>
+						<td>Username</td>
+						<td>Password</td>
+						<td>Action</td>
+					    </tr>
+
+            {% for row in employees %}
+		  	    <tr>
+				    <td>{{ row.id }}</td>
+				    <td>{{ row.name }}</td>
+				    <td>{{ row.pwsd }}</td>
+				    <td>
+			       <a href="/update/{{row.id}}" data-toggle="modal" data-target="#modalEdit{{row.id}}" class="btn btn-warning btn-xs">Edit</a>
+			       <a href="/delete/{{row.id}}" class="btn btn-danger btn-xs" onclick="return confirm('Are you sure to delete now ?')" >Delete</a>
+				    </td>
+				    </tr>
+
+                     <!-- The Modal For update form -->
+                <div class="modal mt-5" id="modalEdit{{row.id}}">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                    
+                                    <!-- Modal Header -->
+                      <div class="modal-header">
+                        <h4 class="modal-title">Update Model</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      </div>
+                      
+                      <!-- Modal body -->
+                      <div class="modal-body">
+                        <form action="{{ url_for('update') }}" method="POST">
+                          <div class="form-group">
+                             <label for="name">Username:</label>
+                             <input type="hidden" name="id" value="{{ row.id }}">
+                             <input type="text" class="form-control" placeholder="Enter Name" id="name" name="name" value="{{row.name}}">
+                           </div>
+                           <div class="form-group">
+                             <label for="pwd">Password:</label>
+                             <input type="password" class="form-control" placeholder="Enter password" id="pwd" name="pwsd" value="{{row.pwsd}}">
+                            </div>
+                            
+                           <button type="submit" class="btn btn-primary">Update</button>
+                         </form>.
+                      </div>
+                      
+                      <!-- Modal footer -->
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+  
+
+
+            {% endfor %}
+				</table>
+   			</div>
+
+                       <!-- The Modal For Add New User  -->
+                <div class="modal mt-5" id="myModal">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                    
+                                    <!-- Modal Header -->
+                      <div class="modal-header">
+                        <h4 class="modal-title">New Registration</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                      </div>
+                      
+                      <!-- Modal body -->
+                      <div class="modal-body">
+                        <form action="{{ url_for('insert') }}" method="post">
+                          <div class="form-group">
+                             <label for="name">Username:</label>
+                             <input type="text" class="form-control" placeholder="Enter Name" id="name" name="name">
+                           </div>
+                           <div class="form-group">
+                             <label for="pwd">Password:</label>
+                             <input type="password" class="form-control" placeholder="Enter password" id="pwd" name="pwsd">
+                            </div>
+                            
+                           <button type="submit" class="btn btn-primary">Submit</button>
+                         </form>.
+                      </div>
+                      
+                      <!-- Modal footer -->
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+		
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+  
+</body>
+{% endblock body %}
+</html>

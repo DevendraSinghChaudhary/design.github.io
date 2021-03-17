@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% block title %}
+	<title>Main Page</title>
+	{% endblock title %}
+
+
+	<link rel = "icon" href ="img/1.jpg" type = "image/x-icon"> 
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" >
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/fontawesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:500,700&display=swap" rel="stylesheet">
+
+
+
+<link rel="stylesheet" type="text/css" href="css/style.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" href="{{url_for('static',filename='css/bootstrap.min.css')}}">
+<script src="{{url_for('static',filename='js/jquery.min.js')}}"></script>
+<script src="{{url_for('static',filename='js/popper.min.js')}}"></script>
+<script src="{{url_for('static',filename='js/bootstrap.min.js')}}"></script>
+
+</head>
+
+<body>
+	<header id="masthead" class="position-relative">
+	
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3 position-fixed w-100" style="z-index:100000;margin:0; top:0px">
+	<div class="container">
+  <a class="navbar-brand text-warning font-weight-bold">DevProject</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsenavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="collapsenavbar">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item  mr-3">
+        <a href="/" class="nav-link text-white">Home</a>
+      </li>
+      <li class="nav-item  mr-3">
+        <a href="/service" class="nav-link text-white">Service</a>
+      </li>
+      <li class="nav-item  mr-3">
+        <a href="/login" class="nav-link text-white">Login</a>
+      </li>
+      <li class="nav-item  mr-3">
+        <a href="/main" class="nav-link text-white">Main</a>
+      </li>
+      <li class="nav-item  mr-3">
+        <a href="/registration" class="nav-link text-white">Registration</a>
+      </li>
+      
+    </ul>
+    <form class="form-inline my-2 my-lg-0 top-header-searchbar">
+      <input class="form-control mr-0" type="text" placeholder="Search" style="border-top-right-radius: 0px!important;border-bottom-right-radius: 0px!important;">
+      <button class="btn btn-success my-2 my-sm-0" type="button" style="border-top-left-radius: 0px!important;
+    border-bottom-left-radius: 0px!important;">
+<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-search" viewBox="0 0 18 18">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+</svg>
+</button>
+    </form>
+  </div>
+
+ </div> 
+</nav>
+</header><br><br><br>
+
+  {% block body %}
+  <h1>Main page</h1>
+  {% endblock body %}
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+</html>
